@@ -1,17 +1,17 @@
-# 🦁 Roar of the Lion: Replicating the Evolved Sign Momentum Optimizer
+# 🦁 The Roar of the Lion: Replicating the Evolved Sign Momentum Optimizer
 
-[![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=flat&logo=PyTorch&logoColor=white)](https://pytorch.org/)\n[![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11-blue.svg)](https://www.python.org/)\n[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=flat&logo=PyTorch&logoColor=white)](https://pytorch.org/)
+[![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11-blue.svg)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 This repository contains a modular, from-scratch PyTorch replication and performance verification of **Lion (EvoLved Sign Momentum)**, a first-order optimization algorithm discovered by researchers at Google and UCLA (Chen et al., 2023) using automated symbolic program search [1]. 
 
 ---
 
-## 📖 Abstract
-
-We present a systematic replication and empirical verification of the **Lion** optimizer, evaluating its training dynamics, memory footprints, and optimization trajectories on high-dimensional deep learning tasks. Discovered via evolutionary program search, Lion is mathematically simpler and more memory-efficient than industry-standard adaptive optimizers like **AdamW** and **Adafactor**, as it maintains only momentum history (omitting the second-moment variance vector $v$) [1, 2]. Unlike standard adaptive methods, Lion computes parameter updates through an element-wise **`sign` operation** [1, 4]. This produces uniform update magnitudes that act as a regularizer, steering training toward flatter, more generalizable regions of the loss landscape [1, 18, 97].
+## 📖 Abstract\n\nWe present a systematic replication and empirical verification of the **Lion** optimizer, evaluating its training dynamics, memory footprints, and optimization trajectories on high-dimensional deep learning tasks. Discovered via evolutionary program search, Lion is mathematically simpler and more memory-efficient than industry-standard adaptive optimizers like **AdamW** and **Adafactor**, as it maintains only momentum history (omitting the second-moment variance vector $v$) [1, 2]. Unlike standard adaptive methods, Lion computes parameter updates through an element-wise **`sign` operation** [1, 4]. This produces uniform update magnitudes that act as a regularizer, steering training toward flatter, more generalizable regions of the loss landscape [1, 18, 97].
 
 Over a structured timeline, we build a custom PyTorch optimizer class implementing the evolved Lion update formula [4, 90]. Using standard benchmarks such as image classification on **CIFAR-100**, we evaluate several core performance claims reported in the original paper [1, 91]:
-1. **Hyperparameter Scaling Rules**: Replicating the unique hyperparameter coupling of Lion, showing that it requires a **3–10x smaller learning rate** ($lr$) and a **3–10x larger weight decay** ($\lambda$) than AdamW to maintain equivalent effective weight decay strength ($lr \cdot \lambda$) [8, 38].
+1. **Hyperparameter Scaling Rules**: Replicating the unique hyperparameter coupling of Lion, showing that it requires a **3–10x smaller learning rate** ($lr$) and a **3–10x larger weight decay** ($\\lambda$) than AdamW to maintain equivalent effective weight decay strength ($lr \\cdot \\lambda$) [8, 38].
 2. **Batch Size Sensitivity**: Verifying the paper's finding that Lion's performance gains over AdamW scale up with larger training batch sizes, particularly demonstrating robust convergence at a batch size of 4,096 [8, 37].
 3. **Loss Geometry and Generalization**: Implementing random Gaussian noise perturbations (weight-space flatness audits) to verify that Lion forces models to converge to flatter loss landscape minima compared to AdamW [8, 97].
 4. **Computational and Memory Savings**: Measuring step-wise execution runtime to replicate the reported **2–15% step speedup** and significantly reduced memory usage across training steps [18].
