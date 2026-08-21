@@ -1,8 +1,6 @@
-# 🦁 Project Lion-Replay: Replicating the Evolved Sign Momentum Optimizer
+# 🦁 Roar of the Lion: Replicating the Evolved Sign Momentum Optimizer
 
-[![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=flat&logo=PyTorch&logoColor=white)](https://pytorch.org/)
-[![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11-blue.svg)](https://www.python.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=flat&logo=PyTorch&logoColor=white)](https://pytorch.org/)\n[![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11-blue.svg)](https://www.python.org/)\n[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 This repository contains a modular, from-scratch PyTorch replication and performance verification of **Lion (EvoLved Sign Momentum)**, a first-order optimization algorithm discovered by researchers at Google and UCLA (Chen et al., 2023) using automated symbolic program search [1]. 
 
@@ -57,7 +55,7 @@ $$m_t \leftarrow \beta_2 m_{t-1} + (1 - \beta_2) g_t$$
 ### **Week 1: Custom Math & Core Pipeline**
 - [ ] Implement `class Lion(torch.optim.Optimizer)` in PyTorch, implementing the exact dual-interpolation and sign logic [4, 90].
 - [ ] Build a standard image classification training pipeline on **CIFAR-100** using ResNet-18 [19, 91].
-- [ ] Establish a rigorous **AdamW** control baseline, tracking train/val losses, accuracy, and step runtimes [19, 22].
+- [ ] Establish a rigorous **AdamW** control baseline, tracking train/val losses, and step runtimes [19, 22].
 
 ### **Week 2: Hyperparameter Sweeps & Scale Sensitivity**
 - [ ] Conduct logarithmic grid sweeps on learning rate ($\eta \in [10^{-5}, 10^{-3}]$) and weight decay ($\lambda \in [0.01, 20.0]$) [38, 39].
